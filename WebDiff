@@ -43,3 +43,10 @@ git checkout $3
 
 echo "Taking pics.. \n"
 python ../../../webkit2png/webkit2png -F -o ../pics/$3 http://0.0.0.0:8000/project
+
+echo "Putting into webpage"
+cd ../
+
+sed -i "" '/<div class="pic_container">/ a\
+    <h4>Repo: '$1'</h4><h4>Commit: '$2'</h4><img src="pics/'$2'-full.png" ><h4>Commit: '$3'</h4><img src="pics/'$3'-full.png" >' index.html
+    
